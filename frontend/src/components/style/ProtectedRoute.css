@@ -1,0 +1,177 @@
+/* =========================================================
+   PROFLOW — PROTECTED ROUTE
+   Authentication Transition / Loading Styles
+   ========================================================= */
+
+
+/* =========================================================
+   PROTECTED ROUTE CONTAINER
+   ========================================================= */
+
+.protected-route {
+  min-height: calc(100vh - var(--navbar-height));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(0, 184, 148, 0.08),
+      transparent 30%
+    ),
+    var(--bg);
+}
+
+
+/* =========================================================
+   LOADING STATE
+   ========================================================= */
+
+.protected-route-loading {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  min-height: 260px;
+
+  color: var(--text-secondary);
+
+  animation: protectedRouteFadeIn 0.4s ease both;
+}
+
+
+/* =========================================================
+   LOADING SPINNER
+   ========================================================= */
+
+.protected-route-spinner {
+  width: 42px;
+  height: 42px;
+
+  border: 3px solid var(--primary-light);
+  border-top-color: var(--primary);
+
+  border-radius: 50%;
+
+  animation:
+    protectedRouteSpin 0.8s linear infinite;
+}
+
+
+/* =========================================================
+   LOADING TEXT
+   ========================================================= */
+
+.protected-route-loading-text {
+  color: var(--text-secondary);
+
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  animation:
+    protectedRoutePulse 1.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PAGE TRANSITION
+   ========================================================= */
+
+.protected-route-content {
+  animation:
+    protectedRoutePageIn 0.45s ease both;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes protectedRouteFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes protectedRoutePageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes protectedRouteSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes protectedRoutePulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .protected-route {
+    min-height: calc(100vh - var(--navbar-height));
+
+    padding: 30px 16px;
+  }
+
+  .protected-route-spinner {
+    width: 36px;
+    height: 36px;
+  }
+
+  .protected-route-loading-text {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .protected-route-loading,
+  .protected-route-content,
+  .protected-route-spinner,
+  .protected-route-loading-text {
+    animation: none;
+  }
+}

@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: .
+    container_name: proflow-backend
+
+    ports:
+      - "5000:5000"
+
+    env_file:
+      - .env.example
+
+    environment:
+      DB_HOST: host.docker.internal
+
+    restart: unless-stopped
